@@ -39,14 +39,14 @@ app.put("/students/:id", (req, res) => {
 
     const { fullName, age, course } = req.body;
 
-    const whereStudent = db.find(student => student.id === id);
+    const student = db.find(student => student.id === id);
 
-    if (!whereStudent) {
+    if (!student) {
         res.status(404).send("Student not found")
     } 
-    whereStudent.fullName = fullName;
-    whereStudent.age = age;
-    whereStudent.course = course;
+    student.fullName = fullName;
+    student.age = age;
+    student.course = course;
 
     res.json({ message: "The student has been updated" });
 });
